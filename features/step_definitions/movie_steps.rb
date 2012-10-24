@@ -14,9 +14,7 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  #  ensure that that e1 occurs before e2.
-  #  page.content  is the entire content of the page as a string.
-  flunk "Unimplemented"
+  assert(page.body.index(e1) < page.body.index(e2))
 end
 Then /I should see the appropriate movies/ do
   Movie.find_all_by_rating(["PG-13", "R"]).each do |x|
